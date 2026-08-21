@@ -240,9 +240,11 @@ export const public_blacklist: string = "https://black.qimo.ink/api/users/";
 
 //=====================限制API调用=============================
 //要求登录 1-开 0-关
-export const need_login: io = 1;
+// 放开：网页端油猴脚本(redirect模式)默认不带 access_key，登录校验会拦成 E=6；私人服务器无需强制登录
+export const need_login: io = 0;
 //允许WEB版使用(B站官网可直接请求,无需开启此选项) 1-开 0-关
-export const web_on: io = 0;
+// 开启：网页端脚本会把 playurl 请求重定向到本服务器，不开会返回 -412(E=1) 导致新版页面整页崩溃
+export const web_on: io = 1;
 //允许Referer为 https://www.bilibili.com 的请求而无需打开web_on (解决BBDown问题) 1-开 0-关
 //用BBDown的打开此选项(虽然似乎没用)
 export const pass_web_on_check: io = 1;
